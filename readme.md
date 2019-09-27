@@ -1,6 +1,8 @@
 NRZ Decoder
 ===========
 
+![Waveform](waveform.png)
+
 The following project provides the scaffold to build a basic non-return-to-zero decoder.
 
 Protocol Description
