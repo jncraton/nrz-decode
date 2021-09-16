@@ -24,10 +24,10 @@ def get_samples(wavfile):
 def decode_bits(samples):
     """Returns a list of bits decoded from wave file samples
 
-    >>> decode_bits(get_samples('message.wav'))[0]
+    >>> decode_bits([-.5]*1000)[0]
     0
 
-    >>> decode_bits(get_samples('message.wav'))[2]
+    >>> decode_bits([.5]*1000)[0]
     1
 
     >>> decode_bits(get_samples('message.wav'))[0:10]
