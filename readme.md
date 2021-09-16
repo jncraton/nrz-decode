@@ -36,8 +36,7 @@ The transmission uses a baud rate of 300.
 Useful libraries
 ----------------
 
-You are free to use the libraries that are best suited to this task. The libraries that I recommend are already imported in `decode.py`. They are:
+You are free to use the libraries that are best suited to this task. The following libraries are already used:
 
-- [wave](https://docs.python.org/3/library/wave.html) - for reading wave file data a `bytes`
-- [bitarray](https://github.com/ilanschnell/bitarray) - for dealing with individual bits
+- [wave](https://docs.python.org/3/library/wave.html) - for reading wave file data as `bytes`
 - [struct](https://docs.python.org/3/library/struct.html) - for translating bytes to values understood by Python
