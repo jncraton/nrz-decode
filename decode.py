@@ -53,7 +53,7 @@ def get_char(bits):
 
 
 def parse_byte(byte):
-    """Converts 10 bits off the bitstream to a character
+    """Converts 10 bits with start and stop bit to a single character
     
     The stop and start bits are verified before the character is returned.
 
