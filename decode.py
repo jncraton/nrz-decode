@@ -17,6 +17,9 @@ def get_samples(wavfile):
     '0.83'
     """
 
+    with wave.open(wavfile, "rb") as w:
+        return [f[0] / 2 ** 15 for f in struct.iter_unpack("<h", w.readframes(1e6))]
+
 
 def decode_bits(samples):
     """Returns a list of bits decoded from wave file samples
