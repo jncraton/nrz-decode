@@ -38,6 +38,9 @@ def decode_bits(samples):
 def get_char(bits):
     """Converts a list of 8 bits to a Python character
 
+    Conversion assumes that bits are stored with the least significant
+    bit first.
+
     >>> get_char([0, 1, 1, 1, 0, 0, 1, 0])
     'N'
 
