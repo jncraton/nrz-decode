@@ -53,13 +53,9 @@ def get_char(bits):
 
 
 def parse_byte(byte):
-    """Processes 1 byte of data (10 total bits) off the bitstream
-
-    Note that byte here does not refer to the Python byte data type. A byte
-    here refers to a 10 bit sequence including the stop and start bit on
-    the wire.
-
-    The stop and start bits should be verified before the string is returned.
+    """Converts 10 bits off the bitstream to a character
+    
+    The stop and start bits are verified before the character is returned.
 
     >>> parse_byte([0, 0, 1, 1, 1, 0, 0, 1, 0, 1])
     'N'
