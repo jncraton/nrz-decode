@@ -18,7 +18,7 @@ def get_samples(wavfile):
     """
 
     with wave.open(wavfile, "rb") as w:
-        return [f[0] / 2 ** 15 for f in struct.iter_unpack("<h", w.readframes(1e6))]
+        return [f[0] / 2**15 for f in struct.iter_unpack("<h", w.readframes(1e6))]
 
 
 def decode_bits(samples):
@@ -54,7 +54,7 @@ def get_char(bits):
 
 def parse_byte(byte):
     """Converts 10 bits with start and stop bit to a single character
-    
+
     The stop and start bits are verified before the character is returned.
 
     >>> parse_byte([0, 0, 1, 1, 1, 0, 0, 1, 0, 1])
