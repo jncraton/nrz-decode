@@ -96,8 +96,16 @@ def decode_string(bits):
 def decode(wavfile):
     """Decode a wav file containing an NRZ encoded message
 
-    >>> ''.join(decode('message.wav'))
-    'Now you know how to decode messages transmitted using non-return-to-zero encoding!'
+    >>> ''.join(decode('message.wav'))[0]
+    'N'
+    >>> ''.join(decode('message.wav'))[1]
+    'o'
+    >>> ''.join(decode('message.wav'))[-1]
+    '!'
+    >>> ''.join(decode('message.wav'))[-2]
+    'g'
+    >>> len(''.join(decode('message.wav')))
+    82
     """
 
     samples = get_samples(wavfile)
