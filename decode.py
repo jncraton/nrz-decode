@@ -2,8 +2,10 @@ import wave
 import struct
 import sys
 
+from typing import List
 
-def get_samples(wavfile):
+
+def get_samples(wavfile: str) -> List[float]:
     """Returns a list of raw waveform values from a wav file
 
     Raw values will be returned as floating-point values from -1 to 1
@@ -18,10 +20,10 @@ def get_samples(wavfile):
     """
 
     with wave.open(wavfile, "rb") as w:
-        return [f[0] / 2**15 for f in struct.iter_unpack("<h", w.readframes(1e6))]
+        return [f[0] / 2**15 for f in struct.iter_unpack("<h", w.readframes(int(1e6)))]
 
 
-def decode_bits(samples):
+def decode_bits(samples: List[float]) -> List[int]:
     """Returns a list of bits decoded from wave file samples
 
     >>> decode_bits([-.5]*500)
@@ -35,7 +37,7 @@ def decode_bits(samples):
     """
 
 
-def get_char(bits):
+def get_char(bits: List[int]) -> str:
     """Converts a list of 8 bits to a Python character
 
     Conversion assumes that bits are stored with the least significant
@@ -52,7 +54,7 @@ def get_char(bits):
     """
 
 
-def parse_byte(byte):
+def parse_byte(byte: List[int]) -> str:
     """Converts 10 bits with start and stop bit to a single character
 
     The stop and start bits are verified before the character is returned.
@@ -72,7 +74,7 @@ def parse_byte(byte):
     """
 
 
-def decode_string(bits):
+def decode_string(bits: List[int]) -> str:
     """Creates a string from a list of raw bits
 
     >>> decode_string([0, 0, 1, 1, 1, 0, 0, 1, 0, 1])
@@ -93,7 +95,7 @@ def decode_string(bits):
     """
 
 
-def decode(wavfile):
+def decode(wavfile: str) -> str:
     """Decode a wav file containing an NRZ encoded message
 
     >>> ''.join(decode('message.wav'))[0]
