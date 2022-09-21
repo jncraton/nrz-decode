@@ -1,8 +1,7 @@
+from typing import List
 import wave
 import struct
 import sys
-
-from typing import List
 
 
 def get_samples(wavfile: str) -> List[float]:
@@ -20,7 +19,9 @@ def get_samples(wavfile: str) -> List[float]:
     """
 
     with wave.open(wavfile, "rb") as w:
-        return [f[0] / 2**15 for f in struct.iter_unpack("<h", w.readframes(int(1e6)))]
+        return [
+            f[0] / 2**15 for f in struct.iter_unpack("<h", w.readframes(int(1e6)))
+        ]
 
 
 def decode_bits(samples: List[float]) -> List[int]:
