@@ -4,7 +4,7 @@ import struct
 import sys
 
 
-def get_samples(wavfile: str) -> List[float]:
+def get_samples(wavefile: str) -> List[float]:
     """Returns a list of raw waveform values from a wav file
 
     Raw values will be returned as floating-point values from -1 to 1
@@ -18,7 +18,7 @@ def get_samples(wavfile: str) -> List[float]:
     '0.83'
     """
 
-    with wave.open(wavfile, "rb") as w:
+    with wave.open(wavefile, "rb") as w:
         return [
             f[0] / 2**15 for f in struct.iter_unpack("<h", w.readframes(int(1e6)))
         ]
@@ -96,7 +96,7 @@ def decode_string(bits: List[int]) -> str:
     """
 
 
-def decode(wavfile: str) -> str:
+def decode(wavefile: str) -> str:
     """Decode a wav file containing an NRZ encoded message
 
     >>> ''.join(decode('message.wav'))[0]
@@ -111,7 +111,7 @@ def decode(wavfile: str) -> str:
     82
     """
 
-    samples = get_samples(wavfile)
+    samples = get_samples(wavefile)
     bits = decode_bits(samples)
 
     return decode_string(bits)
