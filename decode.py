@@ -7,9 +7,9 @@ import sys
 def get_samples(wavefile: str) -> List[float]:
     """Returns a list of raw waveform values from a wav file
 
-    Raw values will be returned as floating-point values from -1 to 1
+    Values will be returned a list of floats from -1.0 to 1.0.
 
-    For simplicity, this function need only support wav files up to 1 MiB
+    For simplicity, this function only supports wave files up to 1 MiB.
 
     >>> f"{get_samples('message.wav')[0]:0.2f}"
     '-0.09'
@@ -26,6 +26,9 @@ def get_samples(wavefile: str) -> List[float]:
 
 def decode_bits(samples: List[float]) -> List[int]:
     """Returns a list of bits decoded from wave file samples
+
+    This function assumes that samples are provided at a rate of 44100 per second
+    and represent a transmission that is NRZ encoded at a baud rate of 300.
 
     >>> decode_bits([-.5]*500)
     [0, 0, 0]
