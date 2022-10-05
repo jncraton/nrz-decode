@@ -1,4 +1,4 @@
-all: run
+all: test
 
 run:
 	python3 decode.py message.wav
